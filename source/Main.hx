@@ -12,6 +12,12 @@ class Main extends FlxGame {
     
         if(!FlxGame.mobile) {
             trace("lol");
+            Mobile = false;
+        }
+        
+        if(FlxGame.mobile) {
+            trace("lol");
+            Mobile = true;
         }
     }
 }
