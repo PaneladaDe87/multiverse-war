@@ -1,0 +1,38 @@
+name: Build APK
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+      with:
+        sdk-version: '30.0.3'
+
+    - name: Install Haxe
+      uses: haxe-actions/setup-haxe@v1
+
+    - name: Install Dependencies
+      run: haxelib install lime
+
+    - name: Build APK
+      run: lime build android -release
+
+    - name: Upload APK Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Build
+        path: export/android/bin/Build.apk
