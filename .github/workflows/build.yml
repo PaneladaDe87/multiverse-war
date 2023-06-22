@@ -23,7 +23,7 @@ jobs:
         sdk-version: '30.0.3'
 
     - name: Install Haxe
-      uses: haxe-actions/setup-haxe@v1
+      uses: krdlab/setup-haxe@v1
 
     - name: Install Dependencies
       run: haxelib install lime
